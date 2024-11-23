@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Book-Reservation/static/css/main.75c00059.css",
+    "main.js": "/Book-Reservation/static/js/main.3f157c23.js",
+    "index.html": "/Book-Reservation/index.html",
+    "main.75c00059.css.map": "/Book-Reservation/static/css/main.75c00059.css.map",
+    "main.3f157c23.js.map": "/Book-Reservation/static/js/main.3f157c23.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.75c00059.css",
+    "static/js/main.3f157c23.js"
+  ]
+}
