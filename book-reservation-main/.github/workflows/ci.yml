@@ -1,0 +1,40 @@
+name: Node.js CI
+
+on:
+  pull_request:
+    branches:
+      - main  # Specify the branch for CI trigger (e.g., main)
+
+jobs:
+  ci:
+    name: Node.js Continuous Integration
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Replace with the Node.js version used by your project
+          cache: 'npm'        # Enable caching of npm modules
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm ci  # ci ensures a clean install from package-lock.json
+
+      # Step 4: Run linting (optional)
+      - name: Lint code
+        run: npm run lint  # Replace with your lint command if you have one
+
+      # Step 5: Run tests
+      - name: Run tests
+        run: npm test
+
+      # Step 6: Build project (optional, if your project needs building)
+      - name: Build project
+        run: npm run build
+        
