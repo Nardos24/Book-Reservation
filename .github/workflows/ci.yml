@@ -1,26 +1,32 @@
-name: Node.js CI
+name: CI - Node.js Application
 
 on:
   push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]  # Adjust based on the Node.js versions your app supports
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: ${{ matrix.node-version }}
+
       - name: Install dependencies
-        run: |
-              npm install
+        run: npm install
+
       - name: Run tests
-        run: |
-              npm test
+        run: npm test
